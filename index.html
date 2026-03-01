@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINE 31 | Dongtan Private Sanctuary</title>
+    <meta name="description" content="동탄의 숨겨진 성역, Wine 31. 전문 소믈리에의 큐레이션과 재즈가 흐르는 프라이빗한 공간.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- GSAP & Lenis for Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+
+<body class="loading">
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-logo">WINE 31</div>
+    </div>
+
+    <!-- Global Elements -->
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">WINE 31</a>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fullscreen Menu Overlay -->
+    <div class="menu-overlay">
+        <ul class="menu-links">
+            <li><a href="#home" class="menu-link">Home</a></li>
+            <li><a href="#about" class="menu-link">Philosophy</a></li>
+            <li><a href="#menu" class="menu-link">Taste</a></li>
+            <li><a href="#location" class="menu-link">Visit</a></li>
+        </ul>
+    </div>
+
+    <main id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Hero Section -->
+            <section id="home" class="hero-section">
+                <div class="hero-bg"></div> <!-- Background Image via CSS -->
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="line">The Sanctuary</span>
+                        <span class="line">of Taste</span>
+                    </h1>
+                    <p class="hero-subtitle">Dongtan's Premium Wine & Dining</p>
+                </div>
+                <div class="scroll-indicator">
+                    <span>Scroll</span>
+                    <div class="line"></div>
+                </div>
+            </section>
+
+            <!-- Philosophy (Intro) -->
+            <section id="about" class="philosophy-section section-padding">
+                <div class="container">
+                    <div class="reveal-text">
+                        <p>와인은 단순히 마시는 것이 아닙니다.</p>
+                        <p>그것은 <span class="gold-text">시간</span>을 음미하는 것이며,</p>
+                        <p>공간의 <span class="gold-text">공기</span>를 호흡하는 것입니다.</p>
+                    </div>
+                    <div class="philosophy-desc">
+                        <p>WINE 31은 동탄의 소란스러움을 뒤로한 채, 오직 당신과 와인, 그리고 재즈만이 존재하는 프라이빗한 성역(Sanctuary)입니다. 350여 종의 큐레이션된 와인
+                            리스트는 전문 소믈리에의 손길을 거쳐 당신의 밤을 완벽하게 조각합니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spacial Experience (Interior) -->
+            <section class="spatial-section">
+                <div class="spatial-grid">
+                    <div class="spatial-item item-1">
+                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230215_27%2F1676437912347EU52Y_PNG%2F20230215_141019.png"
+                            alt="Wine 31 Interior">
+                    </div>
+                    <div class="spatial-item item-2">
+                        <div class="spatial-text">
+                            <h3>Atmosphere</h3>
+                            <p>Warm Wood & Low Key Lighting</p>
+                        </div>
+                    </div>
+                    <div class="spatial-item item-3">
+                        <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211012_299%2F1634044677637pvVJm_JPEG%2FpE63GHI7dRqw-F0D8lySctZu.jpg"
+                            alt="Wine Glass & Vibe">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Curated Menu -->
+            <section id="menu" class="menu-section section-padding">
+                <div class="container">
+                    <h2 class="section-heading">Curated Taste</h2>
+
+                    <div class="menu-list">
+                        <!-- Menu Item 1: Special Shrimp Pasta -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221007_273%2F1665127256272WR04S_JPEG%2F%25BD%25BA%25C6%25E4%25BC%25C8%25C6%25C4%25BD%25BA%25C5%25B8.jpg"
+                                    alt="Special Shrimp Pasta">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Special Shrimp Pasta</div>
+                                <div class="menu-desc">왕새우 특선 파스타 (해산물) · 소스 선택 (토마토/크림/오일/로제)</div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Item 2: Hanwoo Steak -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240624_91%2F1719216647996URWaD_JPEG%2FKakaoTalk_20240624_165219123_01.jpg"
+                                    alt="Hanwoo Chaekkeut Deungsim Steak">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Hanwoo Chaekkeut Deungsim Steak</div>
+                                <div class="menu-desc">돌 그릴에 구운 한우 채끝 등심 스테이크</div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Item 3: Gambas -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210702_46%2F1625235255235Y1ivO_PNG%2Fkvz4Lp4SFx-rzHaJewA0YjAk.png"
+                                    alt="Special Main (Gambas)">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Special Main (Gambas)</div>
+                                <div class="menu-desc">감바스 / 바게트</div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Item 4: Bacon Pasta -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240624_50%2F17192156639123RJH2_JPEG%2FKakaoTalk_20240624_165219123_02.jpg"
+                                    alt="Bacon Pasta">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Bacon Pasta</div>
+                                <div class="menu-desc">베이컨 파스타 · 소스 선택 (토마토/크림/로제)</div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Item 5: Special Risotto -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240624_131%2F1719215966879JVaD6_JPEG%2FKakaoTalk_20240624_165807801.jpg"
+                                    alt="Special Risotto">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Special Risotto</div>
+                                <div class="menu-desc">오징어 리조또 · 소스 선택 (토마토/크림/로제)</div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Item 6: Shrimp & Scallops -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240716_153%2F1721109719228SQDxQ_JPEG%2FKakaoTalk_20240716_150011156.jpg"
+                                    alt="Shrimp & Scallops">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Shrimp & Scallops</div>
+                                <div class="menu-desc">왕새우 & 가리비 구이</div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Item 7: Caprese Salad -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221007_221%2F1665127186582t26WL_JPEG%2F%25C5%25F5%25B5%25A5%25C0%25CC%25BB%25F8%25B7%25AF%25B5%25E5.jpg"
+                                    alt="Caprese Salad">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Caprese Salad</div>
+                                <div class="menu-desc">오늘의 샐러드 · 제철 채소와 수제 드레싱</div>
+                            </div>
+                        </div>
+
+                        <!-- Menu Item 8: Cheese Plate -->
+                        <div class="menu-row">
+                            <div class="menu-image">
+                                <img src="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221007_280%2F1665127290229NOiLV_JPEG%2F%25C4%25A1%25C1%25EE%25C7%25C3%25B7%25B9%25C0%25CC%25C6%25AE.jpg"
+                                    alt="Cheese Plate">
+                            </div>
+                            <div class="menu-content">
+                                <div class="menu-name">Cheese Plate</div>
+                                <div class="menu-desc">다양한 종류의 치즈를 믹싱한 플레이트</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wine-note">
+                        <p>* 350+ Wines available by bottle & glass.</p>
+                        <p class="pricing-note">Menu pricing available upon visit or inquiry.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wine List Section -->
+            <section id="wines" class="wine-list-section section-padding">
+                <div class="container">
+                    <h2 class="section-heading">Wine Selection</h2>
+                    <p class="wine-intro">A curated collection of over 350 labels from renowned vineyards across the
+                        globe.</p>
+
+                    <!-- Red Wines -->
+                    <div class="wine-category">
+                        <h3 class="category-title">Red Wines</h3>
+                        <div class="wine-grid">
+                            <div class="wine-item">
+                                <div class="wine-name">Vistamar Reserva Cabernet Sauvignon</div>
+                                <div class="wine-origin">비스타마 리제르바 카베르네 쇼비뇽 · Chile</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Castillo Ennego Tempranillo</div>
+                                <div class="wine-origin">카스틸로 에네고 템프라니요 · Spain</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Andrew Peace, Blue Sand Shiraz</div>
+                                <div class="wine-origin">앤드류 피스, 블루샌드 쉬라즈 · Australia</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Lockhart Cabernet Sauvignon</div>
+                                <div class="wine-origin">락하트 까베르네 쇼비뇽 · U.S.A</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">'Q' Reserva Malbec</div>
+                                <div class="wine-origin">큐 리제르바 말벡 · Australia</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Once Upon a Time Zinfandel</div>
+                                <div class="wine-origin">원스 어펀 어 타임 진판델 · U.S.A <span class="wine-note-tag">(월트 디즈니
+                                        오마주)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Chateau Saint Loubert Graves</div>
+                                <div class="wine-origin">샤또 생 루벗 그라브 · France <span class="wine-note-tag">(샤또 오브리옹
+                                        오마주)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Chianti D.O.C.G Governo</div>
+                                <div class="wine-origin">끼안티 DOCG 고베르노 (산지오베제) · Italy</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Vistamar Gran Reserva</div>
+                                <div class="wine-origin">비스타마 그랑 리제르바 카베르네 쇼비뇽 &amp; 쉬라 · Chile</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Appassimento Barbanera</div>
+                                <div class="wine-origin">아파시멘토 바르베라 (메를로 기반 고급 스위트) · Italy</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Domaine Dufouleyr Pinot Noir</div>
+                                <div class="wine-origin">도멘 되푸레르페르 피노누아 · France</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Chateau Grandchemin Saint-Estèphe</div>
+                                <div class="wine-origin">샤또 그랑슈망 쌩떼스테프 · France <span
+                                        class="wine-note-tag">(Bordeaux)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Precision Napa Valley Cabernet Sauvignon</div>
+                                <div class="wine-origin">프리시전 나파밸리 카베르네 쇼비뇽 · U.S.A <span class="wine-note-tag">(Napa
+                                        Valley)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Chateau Pontet Barrail</div>
+                                <div class="wine-origin">샤또 퐁테 메독 · France <span class="wine-note-tag">(Bordeaux)</span>
+                                </div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Châteauneuf-du-Pape AOP</div>
+                                <div class="wine-origin">샤또 네프 뒤 파프 · France <span class="wine-note-tag">(Rhône)</span>
+                                </div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Amarone Valpolicella Mazzi</div>
+                                <div class="wine-origin">마찌 아마로네 발포리첼라 · Italy</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Gran Bosque Private Reserve</div>
+                                <div class="wine-origin">CDB 그랑 보스퀘 · Chile</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- White Wines -->
+                    <div class="wine-category">
+                        <h3 class="category-title">White Wines</h3>
+                        <div class="wine-grid">
+                            <div class="wine-item">
+                                <div class="wine-name">Pavao Escolha</div>
+                                <div class="wine-origin">파바오 이스콜라 아린트 · Portugal <span class="wine-note-tag">(비건
+                                        와인)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Millaman Estate Chardonnay</div>
+                                <div class="wine-origin">밀라만 에스테이트 샤도네이 · Chile</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Snapper Rock Sauvignon Blanc</div>
+                                <div class="wine-origin">스네퍼락 소비뇽블랑 · New Zealand <span class="wine-note-tag">(클라우드 베이
+                                        모티브)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Russian Jack Sauvignon Blanc</div>
+                                <div class="wine-origin">러시안 잭 소비뇽블랑 · New Zealand <span class="wine-note-tag">(BTS
+                                        방탄소년단 와인)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Chateau Tour de Goupin Blanc</div>
+                                <div class="wine-origin">샤또 뚜드구팡 블랑 · France <span
+                                        class="wine-note-tag">(Bordeaux)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Chateau de Maligny Chardonnay</div>
+                                <div class="wine-origin">샤또 드 말기니 쁘띠 샤블리 · France <span
+                                        class="wine-note-tag">(Burgundy)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Domaine Vauroux Chablis</div>
+                                <div class="wine-origin">도멘 드 보후 샤블리 · France <span
+                                        class="wine-note-tag">(Burgundy)</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rosé Wines -->
+                    <div class="wine-category">
+                        <h3 class="category-title">Rosé Wines <span class="category-badge">Premium</span></h3>
+                        <div class="wine-grid">
+                            <div class="wine-item">
+                                <div class="wine-name">Armoiries Côtes du Rhône Rosé</div>
+                                <div class="wine-origin">아모리스 꼬뜨 뒤 론 로제 · France</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Minuty M Cru Classé Rosé</div>
+                                <div class="wine-origin">미뉴티 엠 크루 클래스 로제 · France</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Manon Rosé de Provence</div>
+                                <div class="wine-origin">마농 로제 꼬뜨 뒤 프로방스 · France</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sparkling & Champagne -->
+                    <div class="wine-category">
+                        <h3 class="category-title">Sparkling &amp; Champagne</h3>
+                        <div class="wine-grid">
+                            <div class="wine-item">
+                                <div class="wine-name">Nua Rosé Sparkling</div>
+                                <div class="wine-origin">누아 로제 스파클링 · Italy</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Vanitoso Brachetto d'Acqui</div>
+                                <div class="wine-origin">바니토소 브라케토 다퀴 로제 (스위트) · Italy</div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Crémant de Brut</div>
+                                <div class="wine-origin">크레망 드 브룻 · France <span class="wine-note-tag">(Burgundy)</span>
+                                </div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Gounel Lassalle Premier Cru</div>
+                                <div class="wine-origin">구넬 라쌀 테르 프리미어 크루 · France <span
+                                        class="wine-note-tag">(Champagne)</span></div>
+                            </div>
+                            <div class="wine-item">
+                                <div class="wine-name">Moët &amp; Chandon Impérial</div>
+                                <div class="wine-origin">모엣 샹동 임페리얼 · France <span
+                                        class="wine-note-tag">(Champagne)</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wine-footer">
+                        <p>This is a curated selection. Our full wine list features over 350 labels.</p>
+                        <a href="#" class="btn-gold">Request Full Wine List</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location / Contact -->
+            <section id="location" class="location-section section-padding">
+                <div class="container location-grid">
+                    <div class="location-info">
+                        <h2>Visit Us</h2>
+                        <address>
+                            경기 화성시 동탄구 동탄반송2길 25-11<br>
+                            WINE 31
+                        </address>
+                        <div class="contact-details">
+                            <p>RESERVATION: 0507-1336-5452</p>
+                            <p>OPEN: 16:30 - 24:00 (Mon-Fri)</p>
+                            <p>OPEN: 12:30 - 24:00 (Sat)</p>
+                        </div>
+                        <a href="https://naver.me/xucpDZLc" target="_blank" class="btn-outline">Naver Map</a>
+                    </div>
+                    <div class="map-visual">
+                        <!-- Stylized Map Placeholder or Image -->
+                        <div class="map-overlay"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container">
+                    <div class="footer-content">
+                        <span class="copyright">© 2026 WINE 31. All rights reserved.</span>
+                        <div class="socials">
+                            <a href="#">Instagram</a>
+                            <a href="#">Blog</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

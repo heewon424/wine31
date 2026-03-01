@@ -1,0 +1,714 @@
+:root {
+    /* Color Palette */
+    --bg-color: #0a0a0a;
+    --bg-secondary: #0f0f0f;
+    --text-main: #e5e5e5;
+    --text-muted: #888888;
+    --gold: #d4af37;
+    --gold-dim: #8a702a;
+    
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    
+    /* Spacing */
+    --container-width: 1400px;
+    --section-padding: 10rem 2rem;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html.lenis {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { width: 100%; display: block; }
+
+/* Global Texture */
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 900;
+    opacity: 0.05;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    filter: contrast(170%) brightness(100%);
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.loader-logo {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    opacity: 0;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    z-index: 100;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.85) 0%, transparent 100%);
+    backdrop-filter: blur(0px);
+    transition: background 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: #fff;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    z-index: 200;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+    transform: rotate(-45deg) translate(2px, -1px);
+}
+
+/* Fullscreen Menu */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-color);
+    z-index: 90;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-links { text-align: center; }
+
+.menu-link {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    color: var(--text-muted);
+    display: block;
+    margin: 1rem 0;
+    transition: color 0.3s;
+}
+
+.menu-link:hover { color: var(--gold); }
+
+/* Buttons */
+.btn-gold {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.btn-gold:hover {
+    background: var(--gold);
+    color: var(--bg-color);
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--text-muted);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-main);
+    background: var(--text-main);
+    color: var(--bg-color);
+}
+
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2940&q=80');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.1); /* For parallax effect */
+    z-index: -1;
+}
+
+.hero-text {
+    text-align: center;
+    z-index: 10;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 6vw;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #fff;
+    mix-blend-mode: overlay;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-subtitle {
+    margin-top: 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0; /* Animated in JS */
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.7;
+}
+
+.scroll-indicator span {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, #fff, transparent);
+}
+
+/* Philosophy Section */
+.section-padding { padding: 8rem 2rem; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+.reveal-text {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    line-height: 1.4;
+    font-weight: 300;
+    margin-bottom: 4rem;
+}
+
+.reveal-text p { overflow: hidden; } /* For animation masking */
+
+.gold-text { color: var(--gold); font-style: italic; }
+
+.philosophy-desc {
+    max-width: 600px;
+    margin-left: auto;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* Spatial Section */
+.spatial-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto;
+    gap: 2rem;
+    padding: 4rem 5%;
+}
+
+.spatial-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.item-1 { 
+    grid-column: 6 / 13; 
+    grid-row: 1;
+    height: 55vh; 
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.item-1 img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    transform-origin: center center;
+}
+
+.item-2 { 
+    grid-column: 1 / 5; 
+    grid-row: 1;
+    align-self: center; 
+    text-align: left; 
+    padding: 0 2rem;
+}
+.item-2 h3 { font-family: var(--font-serif); font-size: 3rem; font-weight: 300; margin-bottom: 1rem; }
+.item-2 p { color: var(--gold); letter-spacing: 0.1em; }
+
+.item-3 { 
+    grid-column: 1 / 9; 
+    grid-row: 2;
+    height: 50vh; 
+    margin-top: 2rem;
+    border: 1px solid rgba(212, 175, 55, 0.3); 
+}
+.item-3 img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    transform-origin: center center;
+}
+
+/* Menu Section */
+.section-heading {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 5rem;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.menu-list {
+    border-top: 1px solid #222;
+}
+
+.menu-row {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    gap: 2rem;
+}
+
+.menu-image {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.menu-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.menu-row:hover .menu-image img {
+    transform: scale(1.1);
+}
+
+.menu-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu-name {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+}
+
+.menu-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+/* Remove Hover Image Styles entirely */
+.menu-hover-img { display: none; }
+
+.wine-note {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.wine-note p { margin-bottom: 2rem; color: var(--text-muted); }
+.wine-note .pricing-note { 
+    font-size: 0.9rem; 
+    font-style: italic; 
+    color: var(--gold); 
+    margin-bottom: 2rem;
+}
+
+/* Wine List Section */
+.wine-list-section {
+    background: var(--bg-secondary);
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.wine-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 5rem;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.wine-category {
+    margin-bottom: 5rem;
+}
+
+.category-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;   
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.category-badge {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg-color);
+    background: var(--gold);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 0.6rem;
+    opacity: 0.9;
+}
+
+.wine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.wine-item {
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.wine-item:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.wine-name {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.wine-origin {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.wine-price {
+    font-size: 1rem;
+    color: var(--gold);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    margin-top: 0.6rem;
+    letter-spacing: 0.05em;
+}
+
+.wine-note-tag {
+    font-size: 0.8rem;
+    color: var(--gold-dim);
+    font-style: normal;
+    opacity: 0.85;
+}
+
+.wine-footer {
+    text-align: center;
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.wine-footer p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+/* Location Section */
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.location-info h2 { font-family: var(--font-serif); font-size: 3rem; margin-bottom: 2rem; }
+.location-info address { font-style: normal; font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.8; opacity: 0.8; }
+.contact-details p { margin-bottom: 0.5rem; color: var(--gold); }
+
+.map-visual {
+    height: 400px;
+    background-image: url('https://images.unsplash.com/photo-1576089304192-d9dbbe77d612?q=80&w=2670&auto=format&fit=crop'); /* Roughly map-like or texture */
+    background-size: cover;
+    filter: grayscale(100%) contrast(1.2) brightness(0.5);
+    border: 1px solid #333;
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 0;
+    border-top: 1px solid #222;
+    font-size: 0.8rem;
+    color: #444;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.socials a { margin-left: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s; }
+.socials a:hover { color: var(--gold); }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero-title { font-size: 15vw; }
+    
+    /* Philosophy Section */
+    .reveal-text { 
+        font-size: 1.4rem;
+        line-height: 1.6;
+        padding: 2rem 1rem;
+    }
+    
+    .philosophy-section {
+        padding: 4rem 0;
+    }
+    
+    .philosophy-section .container {
+        max-width: 100%;
+    }
+    
+    /* Spatial Section */
+    .spatial-grid { 
+        grid-template-columns: 1fr; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 0; 
+    }
+    .item-1, .item-3 { 
+        height: 40vh; 
+        margin: 0; 
+        width: 100%; 
+        grid-column: auto; 
+    }
+    .item-2 { text-align: left; padding: 3rem 0; }
+    .item-3 { margin-top: 0; }
+    
+    /* Menu Section */
+    .menu-row {
+        flex-direction: column-reverse;
+        gap: 1rem;
+        padding: 1.5rem 0;
+    }
+    
+    .menu-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .menu-content {
+        width: 100%;
+    }
+    
+    .menu-name {
+        font-size: 1.3rem;
+    }
+    
+    .menu-desc {
+        font-size: 0.9rem;
+    }
+    
+    /* Wine List Section */
+    .wine-intro {
+        font-size: 1rem;
+        padding: 0 1rem;
+        margin-bottom: 3rem;
+    }
+    
+    .wine-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .category-title {
+        font-size: 1.8rem;
+    }
+    
+    .wine-item {
+        padding: 1.2rem;
+    }
+    
+    .wine-name {
+        font-size: 1.2rem;
+    }
+    
+    .wine-origin {
+        font-size: 0.85rem;
+    }
+    
+    .wine-category {
+        margin-bottom: 3rem;
+    }
+    
+    .wine-footer {
+        margin-top: 3rem;
+        padding-top: 2rem;
+    }
+    
+    /* Location Section */
+    .location-grid { 
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+    }
+    
+    .location-info h2 {
+        font-size: 2rem;
+    }
+    
+    .map-visual {
+        height: 250px;
+    }
+    
+    /* General */
+    .menu-link { font-size: 2.5rem; }
+    
+    .section-heading {
+        font-size: 2.5rem;
+    }
+    
+    .section-padding {
+        padding: 4rem 0;
+    }
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+}
+
